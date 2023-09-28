@@ -34,34 +34,34 @@ const AdminMap: React.FC = () => {
     });
   };
 
-  const getDirections = async (destinationLat: number, destinationLong: number) => {
-    try {
-      const response = await fetch(
-        `/api/directions?originLat=${Lat}&originLong=${Long}&destinationLat=${destinationLat}&destinationLong=${destinationLong}`,
-        {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
+  // const getDirections = async (destinationLat: number, destinationLong: number) => {
+  //   try {
+  //     const response = await fetch(
+  //       `/api/directions?originLat=${Lat}&originLong=${Long}&destinationLat=${destinationLat}&destinationLong=${destinationLong}`,
+  //       {
+  //         method: 'GET',
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //         },
+  //       }
+  //     );
   
-      if (!response.ok) {
-        throw new Error('Error fetching directions.');
-      }
+  //     if (!response.ok) {
+  //       throw new Error('Error fetching directions.');
+  //     }
   
-      const data = await response.json();
-      console.log('Directions API Response:', data);
+  //     const data = await response.json();
+  //     console.log('Directions API Response:', data);
   
-      if (data.routes && data.routes.length > 0) {
-        setRoutes(data.routes); // Store the routes
-      } else {
-        throw new Error('No routes found.');
-      }
-    } catch (error) {
-      console.error('Error getting directions:', error);
-    }
-  };
+  //     if (data.routes && data.routes.length > 0) {
+  //       setRoutes(data.routes); // Store the routes
+  //     } else {
+  //       throw new Error('No routes found.');
+  //     }
+  //   } catch (error) {
+  //     console.error('Error getting directions:', error);
+  //   }
+  // };
   
 
   useEffect(() => {
@@ -81,7 +81,7 @@ const AdminMap: React.FC = () => {
 
   return (
     <section className='w-screen h-screen gap-2 md:gap-6 overflow-hidden'>
-      <div className='w-full h-[100%]'>
+      <div className='flex w-full h-[100%] gap-6'>
         {<Places onCardClick={handleCardClick} />}
         <div className='w-full h-full sticky'>
           <Map
@@ -116,14 +116,14 @@ const AdminMap: React.FC = () => {
                   <p>Location Information</p>
                   <p>Latitude: {popupInfo.lat.toFixed(6)}</p>
                   <p>Longitude: {popupInfo.long.toFixed(6)}</p>
-                  <button
+                  {/* <button
                     onClick={() => {
                       // Handle "Get Directions" button click
                       getDirections(popupInfo.lat, popupInfo.long);
                     }}
                   >
                     Get Directions
-                  </button>
+                  </button> */}
                 </div>
               </Popup>
             )}
