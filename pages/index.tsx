@@ -1,7 +1,8 @@
 import LoginButton from "./login";
+import LandingPage from "@/pages/LandingPage";
 const IndexPage = () => {
   return (
-    <LoginButton/>
+    <LandingPage/>
   )
 }
 export default IndexPage;
