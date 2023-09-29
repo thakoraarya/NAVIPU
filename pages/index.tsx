@@ -1,4 +1,4 @@
-import LoginButton from "./login";
+// import LoginButton from "./login";
 import LandingPage from "@/pages/LandingPage";
 const IndexPage = () => {
   return (

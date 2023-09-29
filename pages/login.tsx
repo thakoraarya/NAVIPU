@@ -1,12 +1,12 @@
 "use client"
 import {useUser} from '@auth0/nextjs-auth0/client';
-import {useState} from 'react';
+// import {useState} from 'react';
 import LandingPage from './LandingPage';
 import AdminMap from './AdminMap';
 
 const LoginButton = () => {
 
-    const {user, error, isLoading} = useUser();
+    const {user} = useUser();
     if (user) {
         console.log(user)
         return (
