@@ -2,7 +2,7 @@
 import { useUser } from '@auth0/nextjs-auth0/client';
 import dynamic from 'next/dynamic';
 import { useState } from 'react';
-import LandingPage from '../LandingPage';
+import LandingPage from './LandingPage';
 import AdminMap from './AdminMap';
 import Events from './Events';
 const LoginButton = () => {

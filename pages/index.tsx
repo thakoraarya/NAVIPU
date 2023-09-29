@@ -1,4 +1,4 @@
-import LoginButton from "./Components/login";
+import LoginButton from "./login";
 const IndexPage = () => {
   return (
     <LoginButton/>
