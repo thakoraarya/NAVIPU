@@ -81,9 +81,9 @@ const Places: React.FC<PlacesProps> = ({ onCardClick }) => {
   };
 
   return (
-    <div className='overflow-hidden flex flex-col items-center gap-2 w-[15%] md:w-[10%] h-auto rounded-tr-3xl border-l-0 border-b-0  bg-[#fcf9f1] border-[#78786a] border-2 gap-y-6 p-[1.7%] max-h-[800px]'>
+    <div className='overflow-hidden flex flex-col  items-center gap-2 w-fit h-auto rounded-tr-3xl border-l-0 border-b-0  bg-[#fcf9f1] border-[#78786a] border-2 gap-y-6 p-[1.7%] max-h-[800px]'>
       <p className='font-mono font-medium uppercase text-2xl flex items-center'> Places</p>
-      <section className='h-5/6 scroll-smooth rounded-t-md md:rounded-t-xl w-full flex flex-col gap-2 md:gap-4 overflow-y-scroll'>
+      <section className='h-5/6 scroll-smooth rounded-t-md md:rounded-t-xl w-full flex md:flex-col flex-row gap-2 md:gap-4 overflow-y-scroll'>
         {places.map((data) => (
           <PlaceCards
             key={data.id}
