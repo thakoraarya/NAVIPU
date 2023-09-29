@@ -1,6 +1,6 @@
 // eslint-disable-next-line
 import React, {useState} from 'react';
-import Places from './Places';
+import Places from './Components/Places';
 import MapView from './MapView';
 // import Events from './Events';
 // import ControllPanel from './atoms/ControllPanel';

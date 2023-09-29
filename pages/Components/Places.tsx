@@ -90,8 +90,10 @@ const Places: React.FC<PlacesProps> = ({ onCardClick }) => {
             PlaceName={data.PlaceName}
             Latitude={data.Latitude}
             Longitude={data.Longitude}
+            setLatitude={data.Latitude}
+            setLongitude={data.Longitude}
             onClick={() => handleCardClick(data)}
-          />
+           />
         ))}
       </section>
     </div>
