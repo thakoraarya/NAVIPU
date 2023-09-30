@@ -18,9 +18,9 @@ const Header = () => {
 
             <h1 className="text-3xl font-bold w-full absolute  text-center">NAVIPU</h1>
             <div className='w-auto items-center flex gap-4'>
-                <button
-                    className=" bg-[#ddeb78] text-[#1a1e00] px-4 py-2 rounded-3xl"> {!user ? <a href="/api/auth/login">Login</a> : <a href="/api/auth/logout">Logout</a>}
-                </button>
+               {/* <button className=" bg-[#ddeb78] text-[#1a1e00] px-4 py-2 rounded-3xl">*/}
+                    <a href="/api/auth/logout">Logout</a>
+                {/*</button>*/}
 
                 {!user ? (
                     <p className="w-auto">This is a demo please login</p>
