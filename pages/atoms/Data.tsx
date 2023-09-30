@@ -143,7 +143,44 @@ const events: EventData[] = [
         ],
         websiteLink: "https://example.com/event1",
     },
-    // Add more event objects here...
+    {
+        id: 1,
+        image: [
+            "https://maps.gstatic.com/tactile/pane/default_geocode-2x.png",
+            "https://maps.gstatic.com/tactile/pane/default_geocode-2x.png",
+            "https://maps.gstatic.com/tactile/pane/default_geocode-2x.png",
+        ],
+        eventName: "Event 2",
+        eventDescription:
+            "Sed ut perspiciatis unde omnis iste natus error sit voluptatem.",
+        placeName: "Parul University Grounds",
+        date: "2023-10-20",
+        placeLocation: {
+            latitude: 22.2882,
+            longitude: 73.1606,
+        },
+        queryPoints: [
+            {
+                id: 0,
+                queryPointType: "Event Stage",
+                queryPointDescription: "The main stage of the event.",
+                queryPointLocation: {
+                    latitude: 22.2882,
+                    longitude: 73.1606,
+                },
+            },
+            {
+                id: 1,
+                queryPointType: "Food Court",
+                queryPointDescription: "A variety of food options available here.",
+                queryPointLocation: {
+                    latitude: 22.2875,
+                    longitude: 73.1615,
+                },
+            },
+        ],
+        websiteLink: "https://example.com/event2",
+    },
 ];
 
 export {places, events};

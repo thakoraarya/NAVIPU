@@ -8,7 +8,7 @@ const Header = () => {
 
     return (
         <section
-            className="relative w-auto h-20 mx-[2%] flex justify-between rounded-b-3xl border-t-0 items-center p-4 bg-[#fcf9f1] border-[#78786a] border-2">
+            className="relative w-auto h-min mx-[2%] flex justify-between rounded-b-3xl border-t-0 items-center p-4 bg-[#fcf9f1] border-[#78786a] border-2">
             <img
                 style={{maxHeight: '50px'}}
                 className='rounded'

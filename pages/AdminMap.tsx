@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import Places from './Places';
 import MapView from './MapView';
 import Header from "./atoms/Header";
-// import Events from './Events';
+import Events from './Events';
 // import ControllPanel from './atoms/ControllPanel';
 
 const center = {
@@ -24,16 +24,16 @@ const AdminMap: React.FC = () => {
     };
 
     return (
-        <section className='bg-[#fcf9f1] w-screen h-screen flex flex-col gap-2 md:gap-6 overflow-hidden'>
+        <section className='bg-[#fcf9f1] w-full h-auto flex flex-col gap-6 overflow-hidden'>
           <Header/>
-            <div className='w-full h-full flex gap-2 md:gap-6'>
+            <div className='w-full h-auto items-stretch flex gap-6'>
                 <Places onCardClick={handleCardClick}/>
                 {/*map*/}
-                <div className='flex w-full h-full md:flex-col gap-y-2 md:gap-y-6 pb-2 md:pb-6 flex-col-reverse'>
+                <div className='flex w-full h-auto gap-x-6 pb-2 '>
                     {/*<ControllPanel/>*/}
                     <MapView MapLat={Lat} MapLong={Long}/>
                 </div>
-                {/*<Events />*/}
+                <Events />
             </div>
         </section>
     );
