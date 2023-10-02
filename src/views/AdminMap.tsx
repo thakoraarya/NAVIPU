@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import Places from './Places';
+import Places from '../Components/molecules/Places';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { Map, Marker, Popup } from 'react-map-gl';
-import Events from './Events';
-import ControllPanel from './atoms/ControllPanel';
+import Events from '../Components/molecules/Events';
+import ControllPanel from '../Components/atoms/ControllPanel';
 
 const center = {
   lat: 22.28854,

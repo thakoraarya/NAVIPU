@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PlaceCards from './atoms/PlaceCards';
+import PlaceCards from '../atoms/PlaceCards';
 
 interface Place {
   id: number;
