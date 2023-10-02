@@ -1,5 +1,4 @@
-
-
+// Define the Place interface
 export interface PlaceData {
     id: number;
     PlaceName: string;
@@ -9,6 +8,16 @@ export interface PlaceData {
     Longitude: number;
 }
 
+// Define the QueryPoint interface
+export interface QueryPoint {
+    id: number;
+    queryPointType: string;
+    queryPointDescription: string;
+    queryPointLocation: {
+        latitude: number;
+        longitude: number;
+    };
+}
 
 // Define the Event interface
 export interface EventData {
@@ -26,18 +35,7 @@ export interface EventData {
     websiteLink: string;
 }
 
-// Define the QueryPoint interface
-export interface QueryPoint {
-    id: number;
-    queryPointType: string;
-    queryPointDescription: string;
-    queryPointLocation: {
-        latitude: number;
-        longitude: number;
-    };
-}
-
-export const places: PlaceData[] = [
+const places: PlaceData[] = [
     {
         id: 0,
         PlaceName: "PIET",
@@ -113,7 +111,7 @@ export const places: PlaceData[] = [
     },
 ];
 
-export const events: EventData[] = [
+const events: EventData[] = [
     {
         id: 0,
         image: [
@@ -141,26 +139,7 @@ export const events: EventData[] = [
                     longitude: 73.1622,
                 },
             },
-            {
-                id: 1,
-                queryPointType: "Auditorium",
-                queryPointDescription:
-                    "The event will take place in the university's auditorium.",
-                queryPointLocation: {
-                    latitude: 22.291,
-                    longitude: 73.1628,
-                },
-            },
-            {
-                id: 1,
-                queryPointType: "Auditorium",
-                queryPointDescription:
-                    "The event will take place in the university's auditorium.",
-                queryPointLocation: {
-                    latitude: 22.291,
-                    longitude: 73.1628,
-                },
-            },
+            // Add more query point objects here...
         ],
         websiteLink: "https://example.com/event1",
     },
@@ -203,3 +182,5 @@ export const events: EventData[] = [
         websiteLink: "https://example.com/event2",
     },
 ];
+
+export {places, events};

@@ -10,7 +10,7 @@ interface PlaceCardProps {
 
 const PlaceCard: React.FC<PlaceCardProps> = ({PlaceImage, PlaceName, onClick}) => {
     return (
-        <section className="group  bg-[#F0EEE5] group-active:border-[#78786a] group-active:border-2  w-full h-auto flex flex-col p-2 gap-2 justify-between rounded-2xl cursor-pointer" onClick={onClick}>
+        <section className="select-none group  bg-[#F0EEE5] group-active:border-[#78786a] group-active:border-2  w-full h-auto flex flex-col p-2 gap-2 justify-between rounded-2xl cursor-pointer" onClick={onClick}>
             <img
                 className="border-2 border-[#1C1C17] rounded-2xl w-full h-16 object-cover"
                 src={PlaceImage}
