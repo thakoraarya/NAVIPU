@@ -9,14 +9,14 @@ const Profile: React.FC<ProfileProps> = ({ innertext }) => {
     const {  user } = useUser(); // Use useAuth0 hook to access user information
 
     return (
-        <section className="w-auto">
+        <div className="w-auto">
             <p className="capitalize">
                 {innertext},{' '}
                 <span className="font-bold uppercase">
-          {user ? user.nickname : ''}
+          {user ? user.nickname : 'guest'}
         </span>
             </p>
-        </section>
+        </div>
     );
 };
 

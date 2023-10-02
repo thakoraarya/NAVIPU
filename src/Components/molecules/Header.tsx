@@ -1,7 +1,9 @@
 import React from 'react';
 import {useUser} from '@auth0/nextjs-auth0/client';
-import AuthButton from "../atoms/AuthButton";
-import Profile from "../atoms/Profile";
+
+import AuthButton from "@/src/components/atoms/AuthButton";
+import Profile from "@/src/components/atoms/Profile";
+
 
 const Header = () => {
     // Call useUser to get user information

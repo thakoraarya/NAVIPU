@@ -25,7 +25,7 @@ const LandingPage = () => {
 
             <section className='w-full flex flex-col gap-y-4 items-center'>
                 <p className='text-6xl leading-snug text-center '>Find Every Corner Of
-                   <br/> The Campus With NAVIPU</p>
+                    <br/> The Campus With NAVIPU</p>
                 <button
                     className='hover:bg-white bg-[#DDEB78] rounded-lg px-4 py-2 text-xl md:text-2xl border-black border-2'>
                     <a href="/layouts/View">Guest</a></button>
