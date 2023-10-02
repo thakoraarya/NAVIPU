@@ -31,7 +31,7 @@ const LandingPage = () => {
                     <a href="/layouts/View">Guest</a></button>
             </section>
 
-            <img src='LandingPageImage.png' className='w-full' alt="Not Available"/>
+            {/*<img src='LandingPageImage.png' className='w-full' alt="Not Available"/>*/}
         </section>
     )
 };
