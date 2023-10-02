@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import EventsCard from '../atoms/EventsCard';
 import AboutEventItem from '../atoms/AboutEventItem';
-
 import {EventData, events} from '@/src/Components/atoms/Data'
-
 
 const Events: React.FC = () => {
     const [selectedEvent, setSelectedEvent] = useState<EventData | null>(null);
@@ -63,4 +61,3 @@ const Events: React.FC = () => {
 };
 
 export default Events;
-

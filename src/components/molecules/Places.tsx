@@ -1,9 +1,7 @@
 import React, {useState} from 'react'
 import PlaceCard from '../atoms/PlaceCard';
 import {PlaceData, places} from '../atoms/Data';
-
 import PlaceDetail from "@/src/Components/atoms/PlaceDetail";
-
 
 interface PlacesProps {
     onCardClick: (latitude: number, longitude: number) => void;
@@ -22,7 +20,6 @@ const Places: React.FC<PlacesProps> = ({onCardClick}) => {
 
     return (<section
             className='overflow-hidden flex flex-col items-center gap-2 min-w-fit h-auto rounded-tr-3xl border-l-0 border-b-0  bg-[#fcf9f1] border-[#78786a] border-2 gap-y-6 p-[1.7%] max-h-[800px]'>
-
             <div className="font-mono  items-center font-medium uppercase gap-x-4 text-2xl w-min flex">
                 {selectedPlace && (<span
                         onClick={() => setSelectedPlace(null)}
@@ -32,7 +29,6 @@ const Places: React.FC<PlacesProps> = ({onCardClick}) => {
           </span>)}
                 Nearby
             </div>
-
             <section
                 className='h-auto scroll-smooth rounded-t-md md:rounded-t-xl w-full flex flex-col gap-2 md:gap-4 overflow-y-scroll'>
                 {selectedPlace ? <PlaceDetail PlaceName={selectedPlace.PlaceName}
