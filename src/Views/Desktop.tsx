@@ -1,10 +1,8 @@
-// eslint-disable-next-line
 import React, {useState} from 'react';
-import Places from './Places';
-import MapView from './MapView';
-import Header from "./atoms/Header";
-import Events from './Events';
-// import ControllPanel from './atoms/ControllPanel';
+import Places from '@/src/components/molecules/Places';
+import MapView from '@/src/components/molecules/MapView';
+import Header from "@/src/components/molecules/Header";
+import Events from '@/src/components/molecules/Events';
 
 const center = {
     lat: 22.28854,
@@ -12,7 +10,7 @@ const center = {
 };
 
 
-const AdminMap: React.FC = () => {
+const Desktop: React.FC = () => {
     const [Lat, setLatitude] = useState<number>(center.lat);
     const [Long, setLongitude] = useState<number>(center.lng);
 
@@ -33,10 +31,10 @@ const AdminMap: React.FC = () => {
                     {/*<ControllPanel/>*/}
                     <MapView MapLat={Lat} MapLong={Long}/>
                 </div>
-                <Events />
+                <Events  />
             </div>
         </section>
     );
 };
 
-export default AdminMap;
+export default Desktop;
