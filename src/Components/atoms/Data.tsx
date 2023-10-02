@@ -1,4 +1,5 @@
-// Define the Place interface
+
+
 export interface PlaceData {
     id: number;
     PlaceName: string;
@@ -8,16 +9,6 @@ export interface PlaceData {
     Longitude: number;
 }
 
-// Define the QueryPoint interface
-export interface QueryPoint {
-    id: number;
-    queryPointType: string;
-    queryPointDescription: string;
-    queryPointLocation: {
-        latitude: number;
-        longitude: number;
-    };
-}
 
 // Define the Event interface
 export interface EventData {
@@ -35,7 +26,18 @@ export interface EventData {
     websiteLink: string;
 }
 
-const places: PlaceData[] = [
+// Define the QueryPoint interface
+export interface QueryPoint {
+    id: number;
+    queryPointType: string;
+    queryPointDescription: string;
+    queryPointLocation: {
+        latitude: number;
+        longitude: number;
+    };
+}
+
+export const places: PlaceData[] = [
     {
         id: 0,
         PlaceName: "PIET",
@@ -111,7 +113,7 @@ const places: PlaceData[] = [
     },
 ];
 
-const events: EventData[] = [
+export const events: EventData[] = [
     {
         id: 0,
         image: [
@@ -139,7 +141,26 @@ const events: EventData[] = [
                     longitude: 73.1622,
                 },
             },
-            // Add more query point objects here...
+            {
+                id: 1,
+                queryPointType: "Auditorium",
+                queryPointDescription:
+                    "The event will take place in the university's auditorium.",
+                queryPointLocation: {
+                    latitude: 22.291,
+                    longitude: 73.1628,
+                },
+            },
+            {
+                id: 1,
+                queryPointType: "Auditorium",
+                queryPointDescription:
+                    "The event will take place in the university's auditorium.",
+                queryPointLocation: {
+                    latitude: 22.291,
+                    longitude: 73.1628,
+                },
+            },
         ],
         websiteLink: "https://example.com/event1",
     },
@@ -182,5 +203,3 @@ const events: EventData[] = [
         websiteLink: "https://example.com/event2",
     },
 ];
-
-export {places, events};

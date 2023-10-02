@@ -1,5 +1,5 @@
 import React from "react";
-import AuthButton from "@/src/components/atoms/AuthButton";
+import AuthButton from "../Components/atoms/AuthButton";
 
 const LandingPage = () => {
     return (
@@ -31,7 +31,7 @@ const LandingPage = () => {
                     <a href="/layouts/View">Guest</a></button>
             </section>
 
-            <img src='LandingPageImage.png' className='w-full' alt="Not Available"/>
+            {/*<img src='LandingPageImage.png' className='w-full' alt="Not Available"/>*/}
         </section>
     )
 };
