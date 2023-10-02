@@ -1,6 +1,6 @@
 import {useMediaQuery} from 'usehooks-ts'
-import Mobile from "@/src/Views/Mobile";
-import Desktop from "@/src/Views/Desktop";
+import Mobile from "../../src/views/Mobile";
+import Desktop from "../../src/views/Desktop";
 
 const View = () => {
     const matches = useMediaQuery('(min-width: 768px)')

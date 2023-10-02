@@ -1,8 +1,7 @@
 import React, {useState} from 'react'
 import PlaceCard from '../atoms/PlaceCard';
 import {PlaceData, places} from '../atoms/Data';
-import PlaceDetail from "@/src/components/atoms/PlaceDetail";
-
+import PlaceDetail from "@/src/Components/atoms/PlaceDetail";
 interface PlacesProps {
     onCardClick: (latitude: number, longitude: number) => void;
 }

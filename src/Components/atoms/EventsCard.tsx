@@ -1,7 +1,7 @@
 import React from 'react'
 
 interface EventCardProps {
-    image: string
+    image: string[]
     eventName: string
     eventDescription: string
     onClick: any
