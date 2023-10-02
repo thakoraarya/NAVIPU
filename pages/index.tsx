@@ -6,7 +6,7 @@ const IndexPage = () => {
 
     const {user, isLoading} = useUser(); // Use useAuth0 hook to access user information
     return (
-        isLoading ? <div>loading</div> :
+        isLoading ? <div className='w-screen h-screen bg-amber-50 text-center text-8xl'>loading</div> :
             user ? <View/> : <LandingPage/>
     )
 }

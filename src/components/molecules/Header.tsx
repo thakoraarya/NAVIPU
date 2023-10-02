@@ -18,7 +18,7 @@ const Header = () => {
             />
 
             <h1 className="text-3xl font-bold w-auto  ">NAVIPU</h1>
-            <div className='w-auto items-center flex gap-4'>
+            <section className='w-auto items-center flex gap-4'>
                 {user ? (
                     <>
                         <Profile innertext='welcome'/>
@@ -33,7 +33,7 @@ const Header = () => {
                     </button>
 
                 )}
-            </div>
+            </section>
         </section>
     );
 };
