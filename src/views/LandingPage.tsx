@@ -1,5 +1,5 @@
 import React from "react";
-import AuthButton from "@/src/components/atoms/AuthButton";
+import AuthButton from "../Components/atoms/AuthButton";
 
 const LandingPage = () => {
     return (
