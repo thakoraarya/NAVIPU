@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import Places from '@/src/components/molecules/Places';
-import MapView from '@/src/components/molecules/MapView';
-import Header from "@/src/components/molecules/Header";
-import Events from '@/src/components/molecules/Events';
+import Places from '../Components/molecules/Places';
+import MapView from '../Components/molecules/MapView';
+import Header from "../Components/molecules/Header";
+import Events from '../Components/molecules/Events';
 
 const center = {
     lat: 22.28854,
@@ -22,9 +22,9 @@ const Desktop: React.FC = () => {
     };
 
     return (
-        <section className='bg-[#fcf9f1] w-full h-auto flex flex-col gap-6 overflow-hidden'>
+        <section className='bg-[#fcf9f1] w-full h-screen flex flex-col justify-between gap-6 overflow-hidden overflow-y-hidden'>
           <Header/>
-            <div className='w-full h-auto items-stretch flex gap-6'>
+            <section className='w-full h-5/6 items-stretch flex gap-6'>
                 <Places onCardClick={handleCardClick}/>
                 {/*map*/}
                 <div className='flex w-full h-auto gap-x-6 pb-2 '>
@@ -32,7 +32,7 @@ const Desktop: React.FC = () => {
                     <MapView MapLat={Lat} MapLong={Long}/>
                 </div>
                 <Events  />
-            </div>
+            </section>
         </section>
     );
 };

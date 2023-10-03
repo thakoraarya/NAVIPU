@@ -1,14 +1,17 @@
 import React from "react";
 import AuthButton from "../Components/atoms/AuthButton";
+import Image from "next/image";
 
 const LandingPage = () => {
     return (
         <section
             className='  from-[#DDEB78] via-[#FCF9F1] to-[#BEECDD] h-screen w-full flex flex-col gap-y-4 items-center justify-between px-4 pt-4 overflow-y-hidden text-center'>
-            <section className='relative bg-[#171E00] px-6 py-5 rounded-2xl flex justify-between items-center w-full mx-6'>
-                <img
-                    style={{maxHeight: '50px'}}
-                    className='rounded'
+            <section
+                className='relative bg-[#171E00] px-6 py-5 rounded-2xl flex justify-between items-center w-full mx-6'>
+                <Image
+                    className='rounded max-h-[4rem] max-w-fit'
+                    width={500}
+                    height={500}
                     src='https://yt3.googleusercontent.com/oEQpDQ-Mt5ICmTvrKelavxxPI1Pk2i3dt0JM1fypJvylX1SEvkVjAeqOhwXNOeQK9k3RSWY5ZQ=s176-c-k-c0x00ffffff-no-rj'
                     alt='college icon'
                 />
@@ -31,7 +34,9 @@ const LandingPage = () => {
                     <a href="/layouts/View">Guest</a></button>
             </section>
 
-            {/*<img src='LandingPageImage.png' className='w-full' alt="Not Available"/>*/}
+            <Image fill={undefined}
+                   width={500}
+                   height={500} src='/LandingPageImage.png' className='w-full' alt="Not Available"/>
         </section>
     )
 };

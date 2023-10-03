@@ -11,7 +11,7 @@ interface MapViewProps {
 
 const MapView: React.FC<MapViewProps> = ({MapLat, MapLong}) => {
 
-    const [initialViewStates, setInitialViewState] = useState({
+    const [CenterView, setInitialViewState] = useState({
         latitude: MapLat,
         longitude: MapLong,
         zoom: 15,
@@ -45,13 +45,15 @@ const MapView: React.FC<MapViewProps> = ({MapLat, MapLong}) => {
 
         <Map
             mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
-            initialViewState={initialViewStates}
+            {...CenterView}
             style={{width: '100%', height: '100%', borderRadius: '24px', border: "black solid "}}
+
             mapStyle="mapbox://styles/mapbox/streets-v12"
+
             // mapStyle="mapbox://styles/mapbox/streets-v10"
             // mapStyle="mapbox://styles/aaryathakor/cllj5hwq6019s01qs83846lry"
         >
-            <Marker latitude={initialViewStates.latitude} longitude={initialViewStates.longitude} anchor="center">
+            <Marker latitude={CenterView.latitude} longitude={CenterView.longitude} anchor="center">
                 <span className='text-3xl'>&#128205;</span>
             </Marker>
         </Map>
