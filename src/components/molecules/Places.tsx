@@ -41,7 +41,7 @@ const Places: React.FC<PlacesProps> = ({onCardClick}) => {
                             PlaceName={data.PlaceName}
                             Latitude={data.Latitude}
                             Longitude={data.Longitude}
-                            onClick={() => handleCardClick(data)}
+                            onPlaceClick={() => handleCardClick(data)}
                         />)))}
             </section>
         </section>);

@@ -6,14 +6,14 @@ interface PlaceCardProps {
   PlaceImage: string;
   Latitude: number; // Change setLatitude to Latitude
   Longitude: number; // Change setLongitude to Longitude
-  onClick: () => void;
+  onPlaceClick: () => void;
 }
 
-const PlaceCard: React.FC<PlaceCardProps> = ({ PlaceImage, PlaceName, onClick }) => {
+const PlaceCard: React.FC<PlaceCardProps> = ({ PlaceImage, PlaceName, onPlaceClick }) => {
   return (
     <section
       className=' group bg-[#F0EEE5] group-active:border-[#78786a] group-active:border-2  w-full h-auto flex flex-col p-2 gap-2 justify-between rounded-2xl cursor-pointer'
-      onClick={onClick}>
+      onClick={onPlaceClick}>
       <Image
         width={300} // Specify the width here
         height={200} // Specify the height here

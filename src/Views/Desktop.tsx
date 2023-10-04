@@ -31,7 +31,7 @@ const Desktop: React.FC = () => {
                     {/*<ControllPanel/>*/}
                     <MapView MapLat={Lat} MapLong={Long}/>
                 </div>
-                <Events  />
+                <Events onEventClick={handleCardClick}  />
             </section>
         </section>
     );

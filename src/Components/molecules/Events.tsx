@@ -3,13 +3,24 @@ import EventsCard from '../atoms/EventsCard';
 import AboutEventItem from '../atoms/AboutEventItem';
 import { EventData, events } from '@/src/Components/atoms/Data';
 
-const Events: React.FC = () => {
-  const [selectedEvent, setSelectedEvent] = useState<EventData | null>(null);
+interface EventsProps {
+  onEventClick: (latitude: number, longitude: number) => any;
+}
 
-  const handleCardClick = (event: EventData) => {
-    // Pass the clicked event to the parent component
+const Events: React.FC<EventsProps> = ({ onEventClick }) => {
+  const [selectedEvent, setSelectedEvent] = useState<EventData | null>(null);
+  // const [eventLocation, setEventLocation] = useState<EventData | null>(null);
+
+  const handleCardClick = (event: EventData): void => {
+    // onEventClick(event.placeLocationlatitude, event.placeLocationlongitude);
     setSelectedEvent(event);
   };
+  const handleEventNameClick = (event: EventData): any => {
+    console.log("it working",event.placeLocationlatitude, event.placeLocationlongitude)
+    onEventClick(event.placeLocationlatitude, event.placeLocationlongitude);
+    setSelectedEvent(event)
+  };
+
 
   return (
     <section
@@ -43,9 +54,9 @@ const Events: React.FC = () => {
             date={selectedEvent.date}
             queryPoint={selectedEvent.queryPoints}
             websiteLink={selectedEvent.websiteLink}
-
-
+            handleEventLocation={handleEventNameClick}
           />
+
         ) : (
           events.map((eventdata) => (
             <EventsCard
@@ -53,7 +64,7 @@ const Events: React.FC = () => {
               image={eventdata.image}
               eventName={eventdata.eventName}
               eventDescription={eventdata.eventDescription}
-              onClick={() => handleCardClick(eventdata)}
+              onClick={() => handleCardClick(eventdata)} // Pass the event to handleCardClick
             />
           ))
         )}
