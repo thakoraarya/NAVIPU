@@ -1,3 +1,4 @@
+'use client'
 export interface PlaceData {
   id: number;
   PlaceName: string;
@@ -50,31 +51,31 @@ export interface QueryPoint {
 
 export const events: EventData[] = [
   {
-  id: 0, image: ['https://maps.gstatic.com/tactile/pane/default_geocode-2x.png', 'https://maps.gstatic.com/tactile/pane/default_geocode-2x.png', 'https://maps.gstatic.com/tactile/pane/default_geocode-2x.png', 'https://maps.gstatic.com/tactile/pane/default_geocode-2x.png'], eventName: 'Dhoom Festival', eventDescription: 'Dhoom Festival is the Annual Festival Celebrated in Parul University.', placeName: 'Parul University Campus', date: '2023-09-15', placeLocationlatitude: 40.6643, placeLocationlongitude: -73.9385, queryPoints: [{
-    id: 0, queryPointType: 'Main Entrance', queryPointDescription: 'The main entrance to the event venue.', queryPointlatitude: 22.2906, queryPointlongitude: 73.1622,
-  }, {
-    id: 1, queryPointType: 'Auditorium', queryPointDescription: 'The event will take place in the university\'s auditorium.', queryPointlatitude: 22.291, queryPointlongitude: 73.1628,
-  }, {
-    id: 1, queryPointType: 'Auditorium', queryPointDescription: 'The event will take place in the university\'s auditorium.', queryPointlatitude: 22.291, queryPointlongitude: 73.1628,
-  }], websiteLink: 'https://example.com/event1',
-},
+    id: 0, image: ['https://maps.gstatic.com/tactile/pane/default_geocode-2x.png', 'https://maps.gstatic.com/tactile/pane/default_geocode-2x.png', 'https://maps.gstatic.com/tactile/pane/default_geocode-2x.png', 'https://maps.gstatic.com/tactile/pane/default_geocode-2x.png'], eventName: 'Dhoom Festival', eventDescription: 'Dhoom Festival is the Annual Festival Celebrated in Parul University.', placeName: 'Parul University Campus', date: '2023-09-15', placeLocationlatitude: 40.6643, placeLocationlongitude: -73.9385, queryPoints: [{
+      id: 0, queryPointType: 'Main Entrance', queryPointDescription: 'The main entrance to the event venue.', queryPointlatitude: 22.2906, queryPointlongitude: 73.1622,
+    }, {
+      id: 1, queryPointType: 'Auditorium', queryPointDescription: 'The event will take place in the university\'s auditorium.', queryPointlatitude: 22.291, queryPointlongitude: 73.1628,
+    }, {
+      id: 1, queryPointType: 'Auditorium', queryPointDescription: 'The event will take place in the university\'s auditorium.', queryPointlatitude: 22.291, queryPointlongitude: 73.1628,
+    }], websiteLink: 'https://example.com/event1',
+  },
   { id: 1, image: ['https://maps.gstatic.com/tactile/pane/default_geocode-2x.png', 'https://maps.gstatic.com/tactile/pane/default_geocode-2x.png', 'https://maps.gstatic.com/tactile/pane/default_geocode-2x.png'], eventName: 'TechFest', eventDescription: 'TechFest is the Event held to showcase the Innovative minds of Parul University.', placeName: 'Parul University Grounds', date: '2023-10-20',
 
-  placeLocationlatitude: 22.2882, placeLocationlongitude: 73.1606,
+    placeLocationlatitude: 22.2882, placeLocationlongitude: 73.1606,
 
-  queryPoints: [{
-    id: 0, queryPointType: 'Event Stage', queryPointDescription: 'The main stage of the event.', queryPointlatitude: 22.2882, queryPointlongitude: 73.1606,
-  }, {
-    id: 1, queryPointType: 'Food Court', queryPointDescription: 'A variety of food options available here.', queryPointlatitude: 22.2875, queryPointlongitude: 73.1615,
-  }], websiteLink: 'https://example.com/event2',
-},
+    queryPoints: [{
+      id: 0, queryPointType: 'Event Stage', queryPointDescription: 'The main stage of the event.', queryPointlatitude: 22.2882, queryPointlongitude: 73.1606,
+    }, {
+      id: 1, queryPointType: 'Food Court', queryPointDescription: 'A variety of food options available here.', queryPointlatitude: 22.2875, queryPointlongitude: 73.1615,
+    }], websiteLink: 'https://example.com/event2',
+  },
   {id: 2, image: ['https://maps.gstatic.com/tactile/pane/default_geocode-2x.png', 'https://maps.gstatic.com/tactile/pane/default_geocode-2x.png', 'https://maps.gstatic.com/tactile/pane/default_geocode-2x.png'], eventName: 'Parul Navratri Festival', eventDescription: 'Come Join the Navratri Festival in Parul University!', placeName: 'Parul University Grounds', date: '2023-10-15 to 2023-10-24',
 
-  placeLocationlatitude: 22.2882, placeLocationlongitude: 73.1606,
+    placeLocationlatitude: 22.2882, placeLocationlongitude: 73.1606,
 
-  queryPoints: [{
-    id: 0, queryPointType: 'Event Stage', queryPointDescription: 'The main stage of the event.', queryPointlatitude: 22.2882, queryPointlongitude: 73.1606,
-  }, {
-    id: 1, queryPointType: 'Food Court', queryPointDescription: 'A variety of food options available here.', queryPointlatitude: 22.2875, queryPointlongitude: 73.1615,
-  }], websiteLink: 'https://example.com/event2',
-}];
+    queryPoints: [{
+      id: 0, queryPointType: 'Event Stage', queryPointDescription: 'The main stage of the event.', queryPointlatitude: 22.2882, queryPointlongitude: 73.1606,
+    }, {
+      id: 1, queryPointType: 'Food Court', queryPointDescription: 'A variety of food options available here.', queryPointlatitude: 22.2875, queryPointlongitude: 73.1615,
+    }], websiteLink: 'https://example.com/event2',
+  }];
