@@ -1,65 +1,41 @@
-import React, {useEffect, useState} from 'react'
-import {Map, Marker} from "react-map-gl";
+import React, { useEffect, useRef } from 'react';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import mapboxgl from 'mapbox-gl';
 
-// const Token ='pk.eyJ1IjoiYWFyeWF0aGFrb3IiLCJhIjoiY2xsM2M3dmMzMDZqOTNjbjJjZzg1ZXdpMCJ9.MUVljcF8mCYtARAUWXeVFA';
 
 interface MapViewProps {
-    MapLat: number;
-    MapLong: number;
+  MapLat: number;
+  MapLong: number;
 }
 
-const MapView: React.FC<MapViewProps> = ({MapLat, MapLong}) => {
+const MapView: React.FC<MapViewProps> = ({ MapLat, MapLong }) => {
+  const mapContainer = useRef(null);
+  // @ts-ignore
+  const token: string = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
+  useEffect(() => {
+    mapboxgl.accessToken = token;// Replace with your Mapbox access token
 
-    const [CenterView, setInitialViewState] = useState({
-        latitude: MapLat,
-        longitude: MapLong,
+    if (mapContainer.current) { // Check if mapContainer is not null
+      const map = new mapboxgl.Map({
+        container: mapContainer.current,
+        style: 'mapbox://styles/mapbox/streets-v12',
+        center: [MapLong, MapLat],
         zoom: 15,
-    });
+      });
 
-    // const [mapCenter, setMapCenter] = useState({
-    //     latitude: MapLat,
-    //     longitude: MapLong,
-    //     zoom: 15,
-    // });
+      // Add a marker to the map
+      new mapboxgl.Marker().setLngLat([MapLong, MapLat]).addTo(map);
 
-
-    useEffect(() => {
-
-        setInitialViewState({
-            latitude: MapLat,
-            longitude: MapLong,
-            zoom: 15,
-
-        })
-        // setMapCenter({
-        //     latitude: MapLat,
-        //     longitude: MapLong,
-        //     zoom: 15,
-        // });
-    }, [MapLat, MapLong]);
+      // Clean up when the component unmounts
+      return () => {
+        map.remove();
+      };
+    }
+  }, [MapLat, MapLong]);
 
 
-
-    return (
-
-        <Map
-            mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
-            {...CenterView}
-            style={{width: '100%', height: '100%', borderRadius: '24px', border: "black solid "}}
-
-            mapStyle="mapbox://styles/mapbox/streets-v12"
-
-            // mapStyle="mapbox://styles/mapbox/streets-v10"
-            // mapStyle="mapbox://styles/aaryathakor/cllj5hwq6019s01qs83846lry"
-        >
-            <Marker latitude={CenterView.latitude} longitude={CenterView.longitude} anchor="center">
-                <span className='text-3xl'>&#128205;</span>
-            </Marker>
-        </Map>
-
-    )
-
-}
+  return <div ref={mapContainer}
+              style={{ width: '100%', height: '100%', borderRadius: '24px', border: 'black solid ' }} />;
+};
 
 export default MapView;
