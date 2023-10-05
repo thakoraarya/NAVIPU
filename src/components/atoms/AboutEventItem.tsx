@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { EventData } from '@/src/components/atoms/Data';
+import { EventData } from '@/src/Components/atoms/Data';
 
 interface QueryPoint {
   queryPointlongitude: number;

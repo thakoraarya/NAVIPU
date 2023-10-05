@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import EventsCard from '@/src/components/atoms/EventsCard';
-import AboutEventItem from '@/src/components/atoms/AboutEventItem';
-import { EventData, events } from '@/src/components/atoms/Data';
+import EventsCard from '@/src/Components/atoms/EventsCard';
+import AboutEventItem from '@/src/Components/atoms/AboutEventItem';
+import { EventData, events } from '@/src/Components/atoms/Data';
 
 interface EventsProps {
   onEventClick: (latitude: number, longitude: number) => void,
