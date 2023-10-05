@@ -11,6 +11,8 @@ const databases = new Databases(client);
 const storage = new Storage(client);
 import { NextPage } from 'next';
 import AppWriteServer from '@/backend/appwrite';
+import AuthButton from '@/src/Components/atoms/AuthButton';
+import Header from '@/src/Components/molecules/Header';
 interface LocationFormData {
   Name: string;
   Description: string;
@@ -157,7 +159,7 @@ export default function AdminForm() {
   };
 
   return (<>
-
+      <Header/>
       <div className="flex m-1 p-1 gap-2 text-[#1B1C17]">
         <div className="w-1/2 h-fit p-4 border-2 rounded-lg bg-[#FBF9F1] shadow-md mt-4 md:mt-0">
           <p className="text-xl font-bold text-blue-500 mb-4">Events Form:</p>
