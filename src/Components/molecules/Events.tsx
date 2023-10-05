@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import EventsCard from '../atoms/EventsCard';
-import AboutEventItem from '../atoms/AboutEventItem';
+import EventsCard from '@/src/Components/atoms/EventsCard';
+import AboutEventItem from '@/src/Components/atoms/AboutEventItem';
 import { EventData, events } from '@/src/Components/atoms/Data';
 
 interface EventsProps {
