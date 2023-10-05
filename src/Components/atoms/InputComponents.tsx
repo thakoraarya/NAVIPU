@@ -1,3 +1,4 @@
+'use client'
 // components/InputElements.tsx
 import React, { ChangeEvent } from 'react';
 
