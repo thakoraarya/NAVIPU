@@ -24,7 +24,7 @@ const Events: React.FC<EventsProps> = ({ onEventClick }) => {
 
   return (
     <section
-      className=' min-h-full min-w-fit max-w-fit rounded-tl-3xl overflow-y-scroll border-[#78786a] flex flex-col items-center gap-y-6 border-2 border-r-0 border-b-0 p-6 custom-cursor-default-hover'>
+      className=' min-h-full min-w-fit md:max-w-fit max-w-full md:rounded-tl-3xl rounded-t-3xl overflow-y-scroll border-[#78786a] flex flex-col items-center gap-y-6 border-2 md:border-r-0 border-b-0 bg-[#fcf9f1] p-6 custom-cursor-default-hover'>
       <div className='font-mono w-full font-medium uppercase text-2xl flex items-center gap-x-4 '>
         {selectedEvent && (
           <span

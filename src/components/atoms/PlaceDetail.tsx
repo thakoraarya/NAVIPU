@@ -10,7 +10,7 @@ interface PlaceDetailProps {
 const PlaceDetail: React.FC<PlaceDetailProps> = ({ PlaceName, PlaceImage, PlaceDescription }) => {
   return (
     <section
-      className=' group bg-[#fcf9f1] border-2 border-[#78786a]  w-[10rem] h-auto flex flex-col p-4 gap-2 justify-between rounded-2xl cursor-pointer'>
+      className=' group bg-[#fcf9f1] border-2 border-[#78786a]  md:w-[10rem] h-auto flex md:flex-col p-4 gap-2 justify-between rounded-2xl cursor-pointer'>
       {/* svg as a square image holder */}
       <Image
         width={300} // Specify the width here
@@ -19,8 +19,10 @@ const PlaceDetail: React.FC<PlaceDetailProps> = ({ PlaceName, PlaceImage, PlaceD
         src={PlaceImage}
         alt='placeholder '
       />
-      <p className=' font-semibold text-xl'>{PlaceName}</p>
-      <p className='text-sm text-left'>{PlaceDescription}</p>
+      <div>
+        <p className=' font-semibold text-xl'>{PlaceName}</p>
+        <p className='text-sm text-left'>{PlaceDescription}</p>
+      </div>
     </section>
   );
 };
