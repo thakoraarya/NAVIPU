@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import mapboxgl from 'mapbox-gl';
 
-
 interface MapViewProps {
   MapLat: number;
   MapLong: number;
@@ -10,18 +9,25 @@ interface MapViewProps {
 
 const MapView: React.FC<MapViewProps> = ({ MapLat, MapLong }) => {
   const mapContainer = useRef(null);
-  // @ts-ignore
-  const token: string = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
-  useEffect(() => {
-    mapboxgl.accessToken = token;// Replace with your Mapbox access token
+  const token: string | undefined = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
+  const mapRef = useRef<mapboxgl.Map | null>(null); // Reference to the map instance
 
-    if (mapContainer.current) { // Check if mapContainer is not null
+  useEffect(() => {
+    mapboxgl.accessToken = token || ''; // Replace with your Mapbox access token
+
+    if (mapContainer.current) {
       const map = new mapboxgl.Map({
         container: mapContainer.current,
-        style: 'mapbox://styles/mapbox/streets-v12',
+        style: 'mapbox://styles/mapbox/satellite-streets-v12',
         center: [MapLong, MapLat],
         zoom: 15,
+        bearing: 0,
+        pitch: 0,
+        minZoom:15,
       });
+
+      // Save the map instance in the ref
+      mapRef.current = map;
 
       // Add a marker to the map
       new mapboxgl.Marker().setLngLat([MapLong, MapLat]).addTo(map);
@@ -31,11 +37,20 @@ const MapView: React.FC<MapViewProps> = ({ MapLat, MapLong }) => {
         map.remove();
       };
     }
+  }, [MapLat, MapLong, token]);
+
+  // Automatically fly to the new location when MapLat or MapLong change
+  useEffect(() => {
+    if (mapRef.current) {
+      mapRef.current.flyTo({
+        center: [MapLong, MapLat],
+        duration: 3000, // Updated duration for a very slow animation
+
+      });
+    }
   }, [MapLat, MapLong]);
 
-
-  return <div ref={mapContainer}
-              style={{ width: '100%', height: '100%', borderRadius: '24px', border: 'black solid ' }} />;
+  return <div ref={mapContainer} className='w-full h-full lg:rounded-2xl' />;
 };
 
 export default MapView;

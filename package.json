@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^3.1.0",
-    "@types/mapbox-gl": "^2.7.14",
+    "@types/mapbox-gl": "^2.7.15",
     "@types/node": "20.6.0",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",

@@ -10,7 +10,7 @@ const center = {
 };
 
 const Desktop: React.FC = () => {
-  const [Lat , setLatitude] = useState<number>(center.lat);
+  const [Lat, setLatitude] = useState<number>(center.lat);
   const [Long, setLongitude] = useState<number>(center.lng);
 
   const handleCardClick = (newLat: number, newLng: number): any => {
@@ -27,10 +27,9 @@ const Desktop: React.FC = () => {
       <section className='w-full h-5/6 items-stretch flex gap-6'>
         <Places onCardClick={handleCardClick} />
         {/*map*/}
-        <div className='flex w-full h-auto gap-x-6 pb-6 '>
-          {/*<ControllPanel/>*/}
+        <section className='flex w-full h-[96%] gap-x-6 rounded-3xl border-2 border-[#78786a]'>
           <MapView MapLat={Lat} MapLong={Long} />
-        </div>
+        </section>
         <Events onEventClick={handleCardClick} />
       </section>
     </section>
