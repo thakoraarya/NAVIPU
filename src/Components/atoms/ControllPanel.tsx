@@ -14,8 +14,8 @@ const ControllPanel = () => {
         </button>
       </div>
       <div className='flex mt-2 md:mt-0'>
-        <div className='p-2 border-2 border-[#DDEB78] rounded-xl bg-light-primary-container'>Time:</div>
-        <div className='p-2 border-2 border-[#DDEB78] rounded-xl bg-light-primary-container'>Distance:</div>
+        <div className='p-2 border-2 border-[#DDEB78] rounded-xl bg-[#DDEB78]'>Time:</div>
+        <div className='p-2 border-2 border-[#DDEB78] rounded-xl bg-[#DDEB78]'>Distance:</div>
       </div>
     </div>
   );
