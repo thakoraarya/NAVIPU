@@ -1,7 +1,7 @@
 import React from 'react';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import Profile from '@/src/components/atoms/Profile';
-import AuthButton from '@/src/Components/atoms/AuthButton';
+import AuthButton from '@/src/components/atoms/AuthButton';
 import Image from 'next/image';
 
 

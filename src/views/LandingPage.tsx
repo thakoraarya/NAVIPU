@@ -1,7 +1,7 @@
 'use client'
 
 import React from "react";
-import AuthButton from "../Components/atoms/AuthButton";
+import AuthButton from "@/src/components/atoms/AuthButton";
 import Image from "next/image";
 
 const LandingPage = () => {
