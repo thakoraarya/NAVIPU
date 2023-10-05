@@ -29,7 +29,7 @@ import React from 'react';
 import MapView from './MapView'; // Adjust the import path as needed
 ```
 
-2. Use the `MapView` component within your React component:
+1. Use the `MapView` component within your React component:
 
 ```javascript
 function App() {
@@ -47,18 +47,18 @@ function App() {
 export default App;
 ```
 
-3. Ensure you have the Mapbox access token available as an environment variable. You can set it in your project's environment or use a package like `dotenv` to manage environment variables.
+1. Ensure you have the Mapbox access token available as an environment variable. You can set it in your project's environment or use a package like `dotenv` to manage environment variables.
 
-4. Configure the Mapbox access token within the `MapView` component. Open the `MapView.js` file and replace `"your-mapbox-token"` with your actual Mapbox access token:
+2. Configure the Mapbox access token within the `MapView` component. Open the `MapView.js` file and replace `"your-mapbox-token"` with your actual Mapbox access token:
 
 ```javascript
 // @ts-ignore
 const token: string = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
 ```
 
-5. Customize the map's appearance and behavior by modifying the `map` object within the `useEffect` function in the `MapView` component.
+1. Customize the map's appearance and behavior by modifying the `map` object within the `useEffect` function in the `MapView` component.
 
-6. The component will create a map centered at the specified latitude and longitude and add a marker to that location.
+2. The component will create a map centered at the specified latitude and longitude and add a marker to that location.
 
 ## Props
 

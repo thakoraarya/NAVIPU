@@ -20,7 +20,7 @@ const MapView: React.FC<MapViewProps> = ({ MapLat, MapLong }) => {
         container: mapContainer.current,
         style: 'mapbox://styles/mapbox/satellite-streets-v12',
         center: [MapLong, MapLat],
-        zoom: 15,
+        zoom: 17,
         bearing: 0,
         pitch: 0,
         minZoom:15,
@@ -45,7 +45,6 @@ const MapView: React.FC<MapViewProps> = ({ MapLat, MapLong }) => {
       mapRef.current.flyTo({
         center: [MapLong, MapLat],
         duration: 3000, // Updated duration for a very slow animation
-
       });
     }
   }, [MapLat, MapLong]);
