@@ -1,3 +1,5 @@
+'use client'
+
 import React from "react";
 import AuthButton from "../Components/atoms/AuthButton";
 import Image from "next/image";
@@ -20,7 +22,7 @@ const LandingPage = () => {
                     streets Of PU
                 </p>
                 <button
-                    className='hover:bg-white bg-[#DDEB78] rounded-2xl px-4 py-2 text-xl md:text-2xl border-black border-2'>
+                    className='hover:bg-white bg-light-primary-container rounded-2xl px-4 py-2 text-xl md:text-2xl border-black border-2'>
                     <AuthButton AuthPath='/api/auth/login' authState='login'/>
                 </button>
             </section>
@@ -30,7 +32,7 @@ const LandingPage = () => {
                 <p className='text-6xl leading-snug text-center '>Find Every Corner Of
                     <br/> The Campus With NAVIPU</p>
                 <button
-                    className='hover:bg-white bg-[#DDEB78] rounded-lg px-4 py-2 text-xl md:text-2xl border-black border-2'>
+                    className='hover:bg-white bg-light-primary-container rounded-lg px-4 py-2 text-xl md:text-2xl border-black border-2'>
                     <a href="/layouts/View">Guest</a></button>
             </section>
 

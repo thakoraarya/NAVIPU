@@ -12,7 +12,7 @@ interface PlaceCardProps {
 const PlaceCard: React.FC<PlaceCardProps> = ({ PlaceImage, PlaceName, onPlaceClick }) => {
   return (
     <section
-      className=' group bg-[#F0EEE5] group-active:border-[#78786a] group-active:border-2  w-full h-auto flex flex-col p-2 gap-2 justify-between rounded-2xl cursor-pointer'
+      className=' group bg-light-surface-container group-active:border-[#78786a] group-active:border-2  w-full h-auto flex flex-col p-2 gap-2 justify-between rounded-2xl cursor-pointer'
       onClick={onPlaceClick}>
       <Image
         width={300} // Specify the width here
