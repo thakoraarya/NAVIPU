@@ -10,7 +10,7 @@ const Header = () => {
   const { user } = useUser();
 
   return (<header
-    className='relative w-auto h-min mx-[2%] flex justify-between rounded-b-3xl border-t-0 items-center p-4 bg-[#fcf9f1] border-[#78786a] border-2'>
+    className='relative w-auto h-min mx-[2%] flex justify-between rounded-b-3xl border-t-0 items-center p-4  border-[#78786a] border-2'>
     <Image
       width={300} // Specify the width here
       height={200} // Specify the height here
@@ -19,21 +19,21 @@ const Header = () => {
       alt=''
     />
 
-    <h1 className='text-3xl font-bold w-auto  '>NAVIPU</h1>
-    <div className='w-auto items-center flex gap-4'>
+    <h1 className='text-3xl font-bold w-auto  '>PU Nav</h1>
+    <section className='w-auto items-center flex gap-4'>
       {user ? (<>
         <Profile innertext='welcome' />
-        <button className=' bg-[#ddeb78] text-[#1a1e00] px-4 py-2 rounded-3xl'>
+        <button className=' bg-light-primary-container text-[#1a1e00] px-4 py-2 rounded-3xl'>
           <AuthButton AuthPath='/api/auth/logout' authState='logout' />
         </button>
       </>) : (
 
-        <button className=' bg-[#ddeb78] text-[#1a1e00] px-4 py-2 rounded-3xl'>
+        <button className=' bg-light-primary-container text-[#1a1e00] px-4 py-2 rounded-3xl'>
           <AuthButton AuthPath='/api/auth/login' authState='login' />
         </button>
 
       )}
-    </div>
+    </section>
   </header>);
 };
 
