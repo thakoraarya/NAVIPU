@@ -1,7 +1,7 @@
 import React from 'react';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import Profile from '@/src/components/atoms/Profile';
-import AuthButton from '@/src/components/atoms/AuthButton';
+import AuthButton from '@/src/Components/atoms/AuthButton';
 import Image from 'next/image';
 
 
@@ -19,7 +19,7 @@ const Header = () => {
       alt=''
     />
 
-    <h1 className='text-3xl font-bold w-auto  '>NAVIPU</h1>
+    <h1 className='text-3xl font-bold w-auto  '>PU Nav</h1>
     <section className='w-auto items-center flex gap-4'>
       {user ? (<>
         <Profile innertext='welcome' />
