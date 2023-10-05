@@ -1,9 +1,9 @@
 'use client'
 import React, { useState } from 'react';
-import Places from '@/src/Components/molecules/Places';
-import MapView from '@/src/Components/molecules/MapView';
-import Header from '@/src/Components/molecules/Header';
-import Events from '@/src/Components/molecules/Events';
+import Places from '@/src/components/molecules/Places';
+import MapView from '@/src/components/molecules/MapView';
+import Header from '@/src/components/molecules/Header';
+import Events from '@/src/components/molecules/Events';
 
 const center = {
   lat: 22.28854,
