@@ -1,63 +1,56 @@
-import React, {useEffect, useState} from 'react'
-import {Map, Marker} from "react-map-gl";
+import React, { useEffect, useRef } from 'react';
 import 'mapbox-gl/dist/mapbox-gl.css';
-
-// const Token ='pk.eyJ1IjoiYWFyeWF0aGFrb3IiLCJhIjoiY2xsM2M3dmMzMDZqOTNjbjJjZzg1ZXdpMCJ9.MUVljcF8mCYtARAUWXeVFA';
+import mapboxgl from 'mapbox-gl';
 
 interface MapViewProps {
-    MapLat: number;
-    MapLong: number;
+  MapLat: number;
+  MapLong: number;
 }
 
-const MapView: React.FC<MapViewProps> = ({MapLat, MapLong}) => {
+const MapView: React.FC<MapViewProps> = ({ MapLat, MapLong }) => {
+  const mapContainer = useRef(null);
+  const token: string | undefined = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
+  const mapRef = useRef<mapboxgl.Map | null>(null); // Reference to the map instance
 
-    const [initialViewStates, setInitialViewState] = useState({
-        latitude: MapLat,
-        longitude: MapLong,
+  useEffect(() => {
+    mapboxgl.accessToken = token || ''; // Replace with your Mapbox access token
+
+    if (mapContainer.current) {
+      const map = new mapboxgl.Map({
+        container: mapContainer.current,
+        style: 'mapbox://styles/mapbox/satellite-streets-v12',
+        center: [MapLong, MapLat],
         zoom: 15,
-    });
+        bearing: 0,
+        pitch: 0,
+        minZoom:15,
+      });
 
-    // const [mapCenter, setMapCenter] = useState({
-    //     latitude: MapLat,
-    //     longitude: MapLong,
-    //     zoom: 15,
-    // });
+      // Save the map instance in the ref
+      mapRef.current = map;
 
+      // Add a marker to the map
+      new mapboxgl.Marker().setLngLat([MapLong, MapLat]).addTo(map);
 
-    useEffect(() => {
+      // Clean up when the component unmounts
+      return () => {
+        map.remove();
+      };
+    }
+  }, [MapLat, MapLong, token]);
 
-        setInitialViewState({
-            latitude: MapLat,
-            longitude: MapLong,
-            zoom: 15,
+  // Automatically fly to the new location when MapLat or MapLong change
+  useEffect(() => {
+    if (mapRef.current) {
+      mapRef.current.flyTo({
+        center: [MapLong, MapLat],
+        duration: 3000, // Updated duration for a very slow animation
 
-        })
-        // setMapCenter({
-        //     latitude: MapLat,
-        //     longitude: MapLong,
-        //     zoom: 15,
-        // });
-    }, [MapLat, MapLong]);
+      });
+    }
+  }, [MapLat, MapLong]);
 
-
-
-    return (
-
-        <Map
-            mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
-            initialViewState={initialViewStates}
-            style={{width: '100%', height: '100%', borderRadius: '24px', border: "black solid "}}
-            mapStyle="mapbox://styles/mapbox/streets-v12"
-            // mapStyle="mapbox://styles/mapbox/streets-v10"
-            // mapStyle="mapbox://styles/aaryathakor/cllj5hwq6019s01qs83846lry"
-        >
-            <Marker latitude={initialViewStates.latitude} longitude={initialViewStates.longitude} anchor="center">
-                <span className='text-3xl'>&#128205;</span>
-            </Marker>
-        </Map>
-
-    )
-
-}
+  return <div ref={mapContainer} className='w-full h-full lg:rounded-2xl' />;
+};
 
 export default MapView;
