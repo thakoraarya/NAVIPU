@@ -1,6 +1,6 @@
 'use client'
 
-import LandingPage from '@/src/Views/LandingPage';
+import LandingPage from '@/src/views/LandingPage';
 import {useUser} from "@auth0/nextjs-auth0/client";
 import View from "@/pages/layouts/View";
 
