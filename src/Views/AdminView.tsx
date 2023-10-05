@@ -1,14 +1,14 @@
 "use client"
 import React, { useState, ChangeEvent } from 'react';
 import {InputElements,TextAreaElements} from '@/src/Components/atoms/InputComponents';
-import { Client,Databases,ID } from 'appwrite';
+import { Client,Databases,ID,Storage } from 'appwrite';
 
 const client = new Client()
   .setEndpoint('https://cloud.appwrite.io/v1')
   .setProject('6515a6863cc51b4b5753');
 
 const databases = new Databases(client);
-
+const storage = new Storage(client);
 import { NextPage } from 'next';
 import AppWriteServer from '@/backend/appwrite';
 interface LocationFormData {
@@ -119,22 +119,36 @@ export default function AdminForm() {
 
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
 
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
+
     if (files) {
       // Convert the FileList to an array
       const fileList = Array.from(files);
 
       // Check if the total number of selected files exceeds 3
-
-      // Add the selected files to the existing array
       if (selectedFiles.length + fileList.length <= 3) {
-        setSelectedFiles([...selectedFiles, ...fileList]);
+        try {
+          // Iterate over the selected files and upload them to the Appwrite bucket
+          for (const file of fileList) {
+            const uniqueId = ID.unique();
+            const response = await storage.createFile('651c4f7a349441fc7571', uniqueId, file);
+            console.log(response); // Success
+          }
+
+          // Update the selectedFiles state with the newly added files
+          setSelectedFiles([...selectedFiles, ...fileList]);
+        } catch (error) {
+          console.error(error); // Handle upload failure
+        }
       } else {
         alert('You can only select a maximum of 3 images.');
+        // Clear the input field to reset the selection
+        event.target.value = '';
       }
     }
   };
+
 
   const handleUpload = () => {
     // Handle the file upload logic here using Next.js API routes or your preferred server-side method
