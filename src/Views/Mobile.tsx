@@ -22,20 +22,25 @@ const Mobile: React.FC = () => {
   const handleTabClick = (tab: 'Places' | 'Events') => {
     setSelectedTab(tab);
   };
+
   return (
     <section className='w-full h-auto flex flex-col gap-6 overflow-hidden'>
-      <section className='absolute h-auto scroll-smooth  w-full flex gap-x-10 overflow-x-scroll z-20 mt-5'>
+
+      {/*nearest places*/}
+      <section className='px-4 absolute h-auto scroll-smooth w-full flex gap-x-3 overflow-x-scroll z-20 mt-5'>
         {places.map((data: PlaceData) => (
-          <button
-            className='min-w-[100px] w-full border-2 border-white rounded-3xl p-2
+          <button onClick={() => handleCardClick(data.Latitude,data.Longitude)}
+                  className='min-w-[100px] w-full rounded-3xl p-2 bg-light-surface-container
               bg-opacity-30 backdrop-blur-md backdrop-filter hover:bg-opacity-40
               hover:bg-[#CAF234] transition duration-300'
-            key={data.PlaceName}
+                  key={data.PlaceName}
           >
             {data.PlaceName}
           </button>
         ))}
       </section>
+
+      {/*switch for places and events*/}
       <div className='w-full h-auto items-stretch flex gap-6'>
         <div className='md:relative absolute z-10 w-screen top-[50%] h-[20%] md:h-screen overflow-scroll'></div>
 
@@ -66,10 +71,9 @@ const Mobile: React.FC = () => {
             <Events onEventClick={handleCardClick} />
             : <Places onCardClick={handleCardClick} />}
         </div>
-
-        <div className='md:relative absolute w-screen h-screen gap-x-6 z-0'>
-          <MapView MapLat={Lat} MapLong={Long} />
-        </div>
+      </div>
+      <div className='md:relative absolute w-screen h-screen gap-x-6 z-0'>
+        <MapView MapLat={Lat} MapLong={Long} />
       </div>
     </section>
   );
