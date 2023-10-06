@@ -10,16 +10,14 @@ export interface PlaceData {
 
 // Define the Event interface
 export interface EventData {
+  date: string;
+  eventDescription: string;
+  eventName: string;
   id: number;
   image: string[];
-  eventName: string;
-  eventDescription: string;
-  placeName: string;
-  date: string;
   placeLocationlatitude: number;
   placeLocationlongitude: number;
-
-
+  placeName: string;
   queryPoints: QueryPoint[];
   websiteLink: string;
 }

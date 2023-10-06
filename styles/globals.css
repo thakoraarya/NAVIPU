@@ -21,3 +21,12 @@
 ::-webkit-scrollbar{
   display: none;
 }
+/* styles.css */
+.conic-gradient {
+  background: conic-gradient(
+          from 180deg at 50% 50%,
+          #DDEB78 0deg,
+          #FCF9F1 180deg,
+          #BEECDD 360deg
+  );
+}
