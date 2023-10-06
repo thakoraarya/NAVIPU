@@ -1,7 +1,6 @@
 "use client"
 import React, { useEffect, useState } from 'react';
-import { Client, Databases, Document } from "appwrite";
-import {Console} from "inspector";
+import { Client, Databases } from "appwrite";
 
 // Define an interface for the first type of document
 interface LocationDocument {
@@ -44,7 +43,7 @@ export default function AppWriteServer() {
         );
 
         // Map Appwrite Document objects to LocationDocument
-        const locationDocs = response.documents.map((doc: Document) => ({
+        const locationDocs = response.documents.map((doc: Record<string, any>) => ({
           Latitude: doc.Latitude,
           Longitude: doc.Longitude,
           Name: doc.Name,
@@ -65,7 +64,7 @@ export default function AppWriteServer() {
         );
 
         // Map Appwrite Document objects to EventDocument
-        const eventDocs = response.documents.map((doc: Document) => ({
+        const eventDocs = response.documents.map((doc: Record<string, any>) => ({
           eventName: doc.eventName,
           eventDescription: doc.eventDescription,
           placeName: doc.placeName,
@@ -120,7 +119,7 @@ export default function AppWriteServer() {
 
 
   // Define a generic renderTable function to handle both types of documents
-  const renderTable = <T extends {}>(
+  const renderTable = <T extends { id: string }>(
     data: T[],
     handleRemoveDocument: (id: string) => void
   ) => {
@@ -157,6 +156,7 @@ export default function AppWriteServer() {
       </div>
     );
   };
+
 
   return (
     <>
