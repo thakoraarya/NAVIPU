@@ -148,7 +148,7 @@ export default function AppWriteServer() {
                 <td key={key} className='border-2 border-black'>{(item as any)[key]}</td>
               ))}
               <td className='border-2 border-black'>
-                <button className='hover:bg-red-700 rounded-3xl p-2 bg-[#CAF234]' onClick={() => handleRemoveDocument(item.id)}>Remove</button>
+                <button className='hover:bg-red-700 rounded-3xl p-2 bg-light-primary-container' onClick={() => handleRemoveDocument(item.id)}>Remove</button>
               </td>
             </tr>
           ))}
