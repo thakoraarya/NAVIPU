@@ -172,7 +172,7 @@ export default function AdminForm() {
           />
           <br />
           <br />
-          <button onClick={handleEventFormSubmit} className='bg-[#CAF234] rounded-3xl border-amber-900 border2 p-2'>Save
+          <button onClick={handleEventFormSubmit} className='bg-light-primary-container rounded-3xl border-amber-900 border2 p-2'>Save
             Event
           </button>
           <p>{successMessage}</p>
@@ -200,7 +200,7 @@ export default function AdminForm() {
             placeholder='Enter Longitude Value'
             onChange={(e) => handleLocationInputChange(e, 'Longitude')}
           />
-          <button onClick={handleLocationFormSubmit} className='bg-[#CAF234] rounded-3xl border2 p-2'>Save Location
+          <button onClick={handleLocationFormSubmit} className='bg-light-primary-container rounded-3xl border2 p-2'>Save Location
           </button>
           <p>{successMessage}</p>
         </div>

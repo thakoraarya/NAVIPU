@@ -45,7 +45,7 @@ const MapView: React.FC<MapViewProps> = ({ MapLat, MapLong }) => {
     if (mapRef.current) {
       mapRef.current.flyTo({
         center: [MapLong, MapLat],
-        duration: 3000, // Updated duration for a very slow animation
+        duration: 1, // Updated duration for a very slow animation
       });
     }
   }, [MapLat, MapLong]);

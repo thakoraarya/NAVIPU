@@ -1,4 +1,3 @@
-'use client';
 import React, { useState } from 'react';
 import MapView from '@/src/Components/molecules/MapView';
 import { PlaceData, places } from '@/src/Components/atoms/Data';
@@ -9,70 +8,104 @@ const center = {
   lat: 22.28854,
   lng: 73.36462,
 };
+
 const Mobile: React.FC = () => {
   const [Lat, setLatitude] = useState<number>(center.lat);
   const [Long, setLongitude] = useState<number>(center.lng);
-  const [selectedTab, setSelectedTab] = useState<'Places' | 'Events'>('Places');
+  const [selectedChip, setSelectedChip] = useState<PlaceData | null>(null);
+  const [selectedTab, setSelectedTab] = useState<'Places' | 'Events' | null>(null);
+
+  // Calculate distances and sort places
+  const sortedPlaces = [...places].sort((placeA, placeB) => {
+    const distanceA = Math.sqrt(
+      Math.pow(placeA.Latitude - Lat, 2) + Math.pow(placeA.Longitude - Long, 2),
+    );
+    const distanceB = Math.sqrt(
+      Math.pow(placeB.Latitude - Lat, 2) + Math.pow(placeB.Longitude - Long, 2),
+    );
+    return distanceA - distanceB;
+  });
 
   const handleCardClick = (newLat: number, newLng: number) => {
     setLatitude(newLat);
     setLongitude(newLng);
+    setSelectedChip(null); // Deselect the chip when a button is clicked
+  };
+
+  const handleChipClick = (chip: PlaceData) => {
+    setSelectedChip(chip); // Select the chip
+    setLatitude(chip.Latitude);
+    setLongitude(chip.Longitude);
   };
 
   const handleTabClick = (tab: 'Places' | 'Events') => {
-    setSelectedTab(tab);
+    if (selectedTab === tab) {
+      // If the same tab is clicked again, close it
+      setSelectedTab(null);
+    } else {
+      setSelectedTab(tab);
+    }
   };
 
   return (
-    <section className='w-full h-auto flex flex-col gap-6 overflow-hidden'>
-
-      {/*nearest places*/}
+    <section className='w-full min-h-full flex flex-col gap-6 overflow-hidden'>
+      {/* Nearest places */}
       <section className='px-4 absolute h-auto scroll-smooth w-full flex gap-x-3 overflow-x-scroll z-20 mt-5'>
-        {places.map((data: PlaceData) => (
-          <button onClick={() => handleCardClick(data.Latitude,data.Longitude)}
-                  className='min-w-[100px] w-full rounded-3xl p-2 bg-light-surface-container
-              bg-opacity-30 backdrop-blur-md backdrop-filter hover:bg-opacity-40
-              hover:bg-[#CAF234] transition duration-300'
-                  key={data.PlaceName}
+        {sortedPlaces.map((data: PlaceData) => (
+          <button
+            onClick={() => {
+              handleCardClick(data.Latitude, data.Longitude);
+              handleChipClick(data); // Select the chip when the button is clicked
+            }}
+            className={`min-w-[5rem] w-full rounded-3xl p-2 transition duration-300 cursor-pointer ${
+              selectedChip === data ? 'bg-light-primary-container' : 'backdrop-blur-md backdrop-filter bg-light-surface-container/20'
+            }`}
+            key={data.PlaceName}
           >
             {data.PlaceName}
           </button>
         ))}
       </section>
-
-      {/*switch for places and events*/}
-      <div className='w-full h-auto items-stretch flex gap-6'>
-        <div className='md:relative absolute z-10 w-screen top-[50%] h-[20%] md:h-screen overflow-scroll'></div>
-
-        <div className='md:relative absolute z-10 w-screen top-[80%] h-[20%] md:h-screen overflow-scroll p-1'>
-          <div className='flex w-full justify-center gap-2 p-2 border-2 border-white rounded-3xl overflow-scroll'>
-            <button
-              className={`w-full border-2 border-white rounded-3xl p-2 
-                bg-opacity-30 backdrop-blur-md backdrop-filter hover:bg-opacity-40 
-                hover:bg-[#CAF234] transition duration-300 ${
-                selectedTab === 'Places' ? 'bg-[#CAF234]' : 'bg-opacity-20'
-              }`}
-              onClick={() => handleTabClick('Places')}
-            >
-              Places
-            </button>
-            <button
-              className={`w-full border-2 border-white rounded-3xl p-2 
-                bg-opacity-30 backdrop-blur-md backdrop-filter hover:bg-opacity-40 
-                hover:bg-[#CAF234] transition duration-300 ${
-                selectedTab === 'Events' ? 'bg-[#CAF234]' : 'bg-opacity-20'
-              }`}
-              onClick={() => handleTabClick('Events')}
-            >
-              Events
-            </button>
-          </div>
-          {selectedTab === 'Events' ?
-            <Events onEventClick={handleCardClick} />
-            : <Places onCardClick={handleCardClick} />}
+      {/* container for switch and components */}
+      <div
+        className={`absolute z-[10] w-full px-4 gap-y-4 flex flex-col justify-start ${
+          selectedTab ? 'h-2/6' : 'h-min mb-4'
+        }`}
+        style={{
+          bottom: selectedTab ? '0' : '-1%', // Use '100%' to hide it off-screen
+          left: '0', // Always keep it at the left edge
+          right: '0', // Always keep it at the right edge
+        }}
+      >
+        {/*switch*/}
+        <div
+          className='backdrop-blur-md backdrop-filter bg-light-surface-container/20 flex w-full h-min justify-between p-2 border-2 border-light-outline rounded-full'>
+          <button
+            onClick={() => handleTabClick('Places')}
+            className={`w-full  rounded-full p-2 h-min text-base transition duration-800 ${
+              selectedTab === 'Places' ? 'bg-light-primary-container' : 'bg-opacity-40'
+            } cursor-pointer`}
+          >
+            Places
+          </button>
+          <button
+            onClick={() => handleTabClick('Events')}
+            className={`w-full  rounded-full p-2 h-min text-base transition duration-800 ${
+              selectedTab === 'Events' ? 'bg-light-primary-container' : 'bg-opacity-20'
+            } cursor-pointer`}
+          >
+            Events
+          </button>
         </div>
+        {/* Conditional rendering based on selectedTab */}
+        {selectedTab === 'Events' ? (
+          <Events onEventClick={handleCardClick} />
+        ) : selectedTab === 'Places' ? (
+          <Places onCardClick={handleCardClick} />
+        ) : null}
       </div>
-      <div className='md:relative absolute w-screen h-screen gap-x-6 z-0'>
+
+      <div className='absolute w-screen h-screen gap-x-6 z-0'>
         <MapView MapLat={Lat} MapLong={Long} />
       </div>
     </section>
