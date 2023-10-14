@@ -15,7 +15,7 @@ const EventsCard: React.FC<EventCardProps> = ({ image, eventName, eventDescripti
       <Image
         width={300} // Specify the width here
         height={200} // Specify the height here
-        className='md:w-full w-40 h-auto rounded-lg border-2 border-[#46492F]'
+        className='lg:w-full w-32 h-full rounded-lg border-2 border-[#46492F]'
         src={image[0]}
         alt={eventName}
       />

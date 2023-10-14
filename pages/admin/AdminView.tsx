@@ -1,11 +1,13 @@
-'use client';
 import React, { ChangeEvent, useState } from 'react';
 import { InputElements, TextAreaElements } from '@/src/Components/atoms/InputComponents';
 import { Client, Databases, ID, Storage } from 'appwrite';
-import AppWriteServer from '@/backend/appwrite';
 import Header from '@/src/Components/molecules/Header';
+import { useUser } from '@auth0/nextjs-auth0/client';
+import AppWriteServer from '@/backend/Appwrite';
+
 
 const client = new Client()
+
   .setEndpoint('https://cloud.appwrite.io/v1')
   .setProject('6515a6863cc51b4b5753');
 
@@ -31,25 +33,37 @@ interface EventFormData {
 }
 
 export default function AdminForm() {
+
+  const { user, isLoading } = useUser();
   const [locationFormData, setLocationFormData] = useState<LocationFormData>({
     Name: '', Description: '', Latitude: '', Longitude: '',
   });
-
   const [eventFormData, setEventFormData] = useState<EventFormData>({
-    eventName: '', eventDescription: '', placeName: '', eventdate: '', latitude: '', longitude: '', queryPoint: '', websiteLink: '',
+    eventName: '',
+    eventDescription: '',
+    placeName: '',
+    eventdate: '',
+    latitude: '',
+    longitude: '',
+    queryPoint: '',
+    websiteLink: '',
   });
-
-  const [successMessage, setSuccessMessage] = useState<string>('');
+  const [successPlaceMessage, setSuccessPlaceMessage] = useState<string>('');
+  const [successEventMessage, setSuccessEventMessage] = useState<string>('');
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
 
   const handleLocationFormSubmit = async () => {
     try {
       const collectionId = '651a64fbdae2453eafd0'; // Replace with your Appwrite collection ID for locations
       const response = await databases.createDocument('651a64c780f4e31fb04c', // Replace with your Appwrite database ID
         collectionId, ID.unique(), {
-          Name: locationFormData.Name, Description: locationFormData.Description, Latitude: locationFormData.Latitude, Longitude: locationFormData.Longitude,
+          Name: locationFormData.Name,
+          Description: locationFormData.Description,
+          Latitude: locationFormData.Latitude,
+          Longitude: locationFormData.Longitude,
         });
       console.log('Location Form Data:', response);
-      setSuccessMessage('Location form submitted successfully');
+      setSuccessPlaceMessage('Location form submitted successfully');
     } catch (error) {
       console.error('Error submitting Location Form:', error);
     }
@@ -60,10 +74,17 @@ export default function AdminForm() {
       const collectionId = '651a658c2bfbb3d0bcec'; // Replace with your Appwrite collection ID for events
       const response = await databases.createDocument('651a64c780f4e31fb04c', // Replace with your Appwrite database ID
         collectionId, ID.unique(), {
-          eventName: eventFormData.eventName, eventDescription: eventFormData.eventDescription, eventdate: eventFormData.eventdate, placeName: eventFormData.placeName, latitude: eventFormData.latitude, longitude: eventFormData.longitude, queryPoint: eventFormData.queryPoint, websiteLink: eventFormData.websiteLink,
+          eventName: eventFormData.eventName,
+          eventDescription: eventFormData.eventDescription,
+          eventdate: eventFormData.eventdate,
+          placeName: eventFormData.placeName,
+          latitude: eventFormData.latitude,
+          longitude: eventFormData.longitude,
+          queryPoint: eventFormData.queryPoint,
+          websiteLink: eventFormData.websiteLink,
         });
       console.log('Event Form Data:', response);
-      setSuccessMessage('Event form submitted successfully');
+      setSuccessEventMessage('Event form submitted successfully');
     } catch (error) {
       console.error('Error submitting Event Form:', error);
     }
@@ -82,7 +103,6 @@ export default function AdminForm() {
     });
   };
 
-  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
 
   const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
@@ -115,10 +135,12 @@ export default function AdminForm() {
   };
 
 
-  return (<>
+  return (isLoading ? <div className='w-screen h-screen bg-amber-50 text-center text-8xl'>loading</div> : user ? (
+    <section className='w-full h-auto px-[4%]  flex flex-col gap-y-5'>
       <Header />
-      <div className='flex m-1 p-1 gap-2 text-[#1B1C17]'>
-        <div className='w-1/2 h-fit p-4 border-2 rounded-lg bg-[#FBF9F1] shadow-md mt-4 md:mt-0'>
+      <AppWriteServer />
+      <section className='flex flex-wrap m-1 p-1 gap-2 text-[#1B1C17]'>
+        <div className='w-auto h-fit p-4 border-2 rounded-lg bg-light-surface shadow-md mt-4 md:mt-0'>
           <p className='text-xl font-bold text-blue-500 mb-4'>Events Form:</p>
           <InputElements
             label='Name'
@@ -172,42 +194,54 @@ export default function AdminForm() {
           />
           <br />
           <br />
-          <button onClick={handleEventFormSubmit} className='bg-light-primary-container rounded-3xl border-amber-900 border2 p-2'>Save
+          <button onClick={handleEventFormSubmit}
+                  className='bg-light-primary-container rounded-full border2 py-2 px-4 border-amber-900'>Save
             Event
           </button>
-          <p>{successMessage}</p>
+          <p>{successEventMessage}</p>
         </div>
-        <div className='w-1/2 h-fit p-4 border-2 rounded-lg bg-[#FBF9F1] shadow-md'>
+        <div className='w-min h-fit p-4 border-2 rounded-lg bg-light-surface shadow-md'>
           <p className='text-xl font-bold text-blue-500 mb-4'>Places Form:</p>
-
-          <InputElements
-            label='Name'
-            placeholder='Enter Location Name'
-            onChange={(e) => handleLocationInputChange(e, 'Name')}
-          />
-          <TextAreaElements
-            label='Description'
-            placeholder='Enter Location Description'
-            onChange={(e) => handleLocationInputChange(e, 'Description')}
-          />
-          <InputElements
-            label='Latitude'
-            placeholder='Enter Latitude Value'
-            onChange={(e) => handleLocationInputChange(e, 'Latitude')}
-          />
-          <InputElements
-            label='Longitude'
-            placeholder='Enter Longitude Value'
-            onChange={(e) => handleLocationInputChange(e, 'Longitude')}
-          />
-          <button onClick={handleLocationFormSubmit} className='bg-light-primary-container rounded-3xl border2 p-2'>Save Location
-          </button>
-          <p>{successMessage}</p>
+          <form onSubmit={handleLocationFormSubmit} className='flex justify-between w-1/2 flex-wrap'>
+            <InputElements
+              label='Name'
+              placeholder='Enter Location Name'
+              onChange={(e) => handleLocationInputChange(e, 'Name')}
+            />
+            <TextAreaElements
+              label='Description'
+              placeholder='Enter Location Description'
+              onChange={(e) => handleLocationInputChange(e, 'Description')}
+            />
+            <InputElements
+              label='Latitude'
+              placeholder='Enter Latitude Value'
+              onChange={(e) => handleLocationInputChange(e, 'Latitude')}
+            />
+            <InputElements
+              label='Longitude'
+              placeholder='Enter Longitude Value'
+              onChange={(e) => handleLocationInputChange(e, 'Longitude')}
+            />
+            <button type='submit' onClick={handleLocationFormSubmit}
+                    className='bg-light-primary-container rounded-full border2 py-2 px-4'>Save Location
+            </button>
+          </form>
+          <p>{successPlaceMessage}</p>
         </div>
-        <div className='overflow-y-hidden'>
-          <AppWriteServer />
-        </div>
-      </div>
 
-    </>);
+
+      </section>
+
+    </section>) : (<section
+    className='w-screen h-screen flex flex-col justify-center items-center '>
+    <p className='text-5xl text-red-800 font-bold'>401</p>
+    <p className='text-3xl text-light-on-error-container font-extrabold'> Unauthorised User</p>
+    <a className='text-3xl text-light-primary font-bold cursor-pointer' href='/'>  <span
+      className='material-symbols-outlined cursor-pointer font-semibold text-xl w-fit'
+    >
+        arrow_back
+      </span> Go back</a>
+  </section>));
+
 }

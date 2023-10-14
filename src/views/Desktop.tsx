@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React, { useState } from 'react';
 import Places from '@/src/Components/molecules/Places';
 import MapView from '@/src/Components/molecules/MapView';
@@ -23,7 +23,7 @@ const Desktop: React.FC = () => {
 
   return (
     <section
-      className='bg-[#fcf9f1] w-full h-screen flex flex-col justify-between gap-6 overflow-hidden overflow-y-hidden'>
+      className='relative bg-light-surface w-full h-screen flex flex-col justify-between gap-6 overflow-hidden overflow-y-hidden'>
       <Header />
       <section className='w-full h-5/6 items-stretch flex gap-6'>
         <Places onCardClick={handleCardClick} />

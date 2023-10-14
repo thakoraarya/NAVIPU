@@ -18,7 +18,7 @@ export function InputElements({ label, placeholder, onChange }: InputElementsPro
   return (
     <div className='items-center flex m-1'>
       <label>{label}</label>&nbsp;
-      <input className='p-1 w-fit rounded-full m-1' placeholder={placeholder} onChange={onChange} />
+      <input className='p-1 w-fit rounded-full m-1 border border-light-outline px-2' placeholder={placeholder} onChange={onChange} required />
     </div>
   );
 }
@@ -27,7 +27,7 @@ export function TextAreaElements({ label, placeholder, onChange }: TextAreaProps
   return (
     <div className='items-center flex m-2'>
       <label>{label}</label>&nbsp;
-      <textarea placeholder={placeholder} className='p-1 w-fit rounded-sm' onChange={onChange}></textarea>
+      <textarea placeholder={placeholder} className='px-5 w-fit rounded-full border border-light-outline' onChange={onChange} required></textarea>
     </div>
   );
 }
