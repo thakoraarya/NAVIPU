@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from 'react';
 import MapView from '@/src/Components/molecules/MapView';
 import { PlaceData, places } from '@/src/Components/atoms/Data';
@@ -59,7 +60,7 @@ const Mobile: React.FC = () => {
       </section>
       {/* container for switch and components */}
       <section
-        className={`absolute bottom-0  transition-all duration-300 ease-out z-[10] w-full px-4 gap-y-4 flex flex-col justify-end ${selectedTab ? (selectedTab === 'Events' ? 'h-3/6' : 'h-2/6') : 'h-min mb-4'}`}>
+        className={`absolute bottom-0  transition duration-500 ease-out z-[10] w-full px-4 gap-y-4 flex flex-col justify-end ${selectedTab ? (selectedTab === 'Events' ? 'h-3/6' : 'h-2/6') : 'h-min mb-4'}`}>
         {/*switch*/}
         <div
           className='backdrop-blur-md backdrop-filter bg-light-surface-container/20 flex w-full h-min justify-between p-2 border-2 border-light-outline rounded-full'>

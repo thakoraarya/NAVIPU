@@ -1,8 +1,8 @@
-import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 import { UserProvider } from '@auth0/nextjs-auth0/client';
 import { Client } from 'appwrite';
-import Head from 'next/head'
+import Head from 'next/head';
+import '@/styles/globals.css'
 
 export default function App({ Component, pageProps }: AppProps) {
   const client = new Client();
@@ -13,10 +13,10 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <Head>
-        <title>My new cool app</title>
-      </Head>
       <UserProvider>
+        <Head>
+          <title>DEV | PUNav</title>
+        </Head>
         <Component {...pageProps} />
       </UserProvider>
     </>

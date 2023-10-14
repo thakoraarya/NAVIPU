@@ -25,15 +25,15 @@ const AboutEventItem: React.FC<AboutEventItemProps> = ({
 
 
   return (<section
-    className='bg-light-tertiary-container backdrop-blur-sm border-[#00201990] overflow-y-scroll h-[44rem] border-2  w-[20.9rem] flex flex-col p-4 gap-y-6 justify-between rounded-2xl cursor-pointer'>
+    className='bg-light-tertiary-container backdrop-blur-sm border-[#00201990] overflow-y-scroll h-min border-2 min-w-min lg:w-[20.9rem] flex flex-col p-4 gap-y-6 justify-between rounded-2xl cursor-pointer'>
     {/* svg as a square image holder */}
     {/* event images */}
-    <section className='flex w-full items-center gap-x-1 justify-center'>
+    <section className='flex lg:flex-row w-full items-center gap-x-1 justify-center'>
       {Array.isArray(image) && image.length > 0 ? (image.map((img: string, index: number) => (<Image
         width={300} // Specify the width here
         height={200} // Specify the height here
         key={index} // Make sure to provide a unique key for each image
-        className={`${index < 1 ? 'w-3/6' : 'w-1/6'}  overflow-x-hidden rounded-2xl h-40 object-cover  transition-all  hover:duration-1000  hover:w-full`}
+        className={`${index < 1 ? 'lg:w-3/6' : 'lg:w-1/6'}  overflow-x-hidden rounded-2xl h-40 object-cover  lg:transition-all lg:hover:duration-1000  lg:hover:w-full`}
         src={img}
         alt={eventName}
       />))) : (<p>No images available</p>)}
