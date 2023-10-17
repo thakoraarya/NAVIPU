@@ -1,0 +1,6 @@
+AUTH0_SECRET='use [openssl rand -hex 32] to generate a 32 bytes value'
+AUTH0_BASE_URL='http://localhost:3000'
+AUTH0_ISSUER_BASE_URL='https://dev-38-o8npv.us.auth0.com'
+AUTH0_CLIENT_ID='K3l4ye3E8DjfbWa0ZDOFqgmPEnDnOo5u'
+AUTH0_CLIENT_SECRET='SIgz2zwk4jRHaKvwYj_SCxV0AdjBc1n0amSg5NuT3v-cFzbvfpXH-kSJzlstLKgq'
+NEXT_PUBLIC_MAPBOX_TOKEN="pk.eyJ1IjoiYWFyeWF0aGFrb3IiLCJhIjoiY2xsM2M3dmMzMDZqOTNjbjJjZzg1ZXdpMCJ9.MUVljcF8mCYtARAUWXeVFA"

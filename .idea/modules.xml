@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/NaviPU.iml" filepath="$PROJECT_DIR$/.idea/NaviPU.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/PU-NAVIGATION.iml" filepath="$PROJECT_DIR$/.idea/PU-NAVIGATION.iml" />
     </modules>
   </component>
 </project>
